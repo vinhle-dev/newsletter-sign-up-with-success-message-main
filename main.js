@@ -1,25 +1,30 @@
 const form = document.querySelector(".form");
+const errorElement = document.getElementById("email-error");
+const signUp = document.querySelector(".sign-up");
+const success = document.querySelector(".success");
+
 if (form) {
   form.addEventListener("submit", (e) => {
+    const emailInput = document.getElementById("email");
     e.preventDefault();
 
-    const data = Object.fromEntries(new FormData(e.target));
-    const emailData = data.email;
-
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-    const errorElement = document.getElementById("email-error");
-    const emailInput = document.getElementById("email");
-    if (emailData.match(emailRegex)) {
-      // errorElement.textContent = "";
-      // emailInput.classList.remove("form-input--error");
-
-      const signUp = document.querySelector(".sign-up");
-      const success = document.querySelector(".success");
+    if (emailInput.validity.valid) {
       signUp.classList.toggle("hidden");
       success.classList.toggle("hidden");
+      emailInput.classList.remove("form-input--error");
+      errorElement.textContent = "";
     } else {
-      errorElement.textContent = "Valid email is required";
+      errorElement.textContent = "Valid email required";
       emailInput.classList.add("form-input--error");
     }
+  });
+}
+
+const dismissButton = document.querySelector(".success .content .button");
+if (dismissButton) {
+  dismissButton.addEventListener("click", () => {
+    signUp.classList.toggle("hidden");
+    success.classList.toggle("hidden");
+    form.reset();
   });
 }
