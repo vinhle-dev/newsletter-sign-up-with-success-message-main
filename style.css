@@ -23,6 +23,7 @@ main {
 
 .sign-up {
   width: 100%;
+  min-width: 20rem;
 }
 
 .image {
@@ -125,6 +126,13 @@ main {
   main {
     background-color: var(--blue-700);
   }
+  .content {
+    justify-content: center;
+    padding: 0 3rem 0 2rem;
+  }
+  .title {
+    font-size: 2.7rem;
+  }
   .sign-up {
     margin: auto;
     display: flex;
@@ -136,7 +144,7 @@ main {
     width: fit-content;
   }
   .sign-up picture {
-    width: 50%;
+    width: 40%;
   }
   .image {
     object-position: right;
